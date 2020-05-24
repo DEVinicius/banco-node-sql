@@ -8,10 +8,10 @@ module.exports = {
 
         return res.json(user);
     },
-    
+
     async show(req, res){
         
         const user = await User.findAll();
         return res.json(user);
     }
-}
+};
