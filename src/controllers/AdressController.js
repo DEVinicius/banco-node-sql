@@ -17,5 +17,19 @@ module.exports = {
             return res.json(adress);
         }
         
+    },
+    async show(req, res){
+        const adress = await Adress.findAll();
+        return res.json(adress);
+    },
+    async showOne(req, res){
+        const { user_id }= req.params;
+
+        const user = await User.findByPk(user_id, {
+            include: { association: 'adresses' }
+        });
+
+        const adresses = await Adress.findAll({ where: { user_id } });
+        return res.json(user); 
     }
 }
