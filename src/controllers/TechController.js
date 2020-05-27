@@ -21,6 +21,11 @@ module.exports = {
         return res.json( tech );
     },
     async show(req, res){
+        const { user_id } = req.params;
+
+        const user = await User.findByPk(user_id, {
+            include: { association: "techs"}
+        })
 
     },
     async delete(req, res){
@@ -37,7 +42,7 @@ module.exports = {
             where: { name }
         });
 
-        await User.removeTech(tech);
+        await user.removeTech(tech);
 
         res.json();
     }
