@@ -27,6 +27,8 @@ module.exports = {
             include: { association: "techs"}
         })
 
+        return res.json( user.techs );
+
     },
     async delete(req, res){
         const { user_id } = req.params;
